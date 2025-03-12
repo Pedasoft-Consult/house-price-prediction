@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+        input, select {
+            display: block;
+            margin: 10px 0;
+            width: 100%;
+            padding: 8px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>House Price Prediction</h2>
+    <form id="predictionForm">
+        <label>Area (sq ft):</label>
+        <input type="number" name="area" required>
+
+        <label>Bedrooms:</label>
+        <input type="number" name="bedrooms" required>
+
+        <label>Bathrooms:</label>
+        <input type="number" name="bathrooms" required>
+
+        <label>Stories:</label>
+        <input type="number" name="stories" required>
+
+        <label>Main Road:</label>
+        <select name="mainroad"><option value="yes">Yes</option><option value="no">No</option></select>
+
+        <label>Guest Room:</label>
+        <select name="guestroom"><option value="yes">Yes</option><option value="no">No</option></select>
+
+        <label>Basement:</label>
+        <select name="basement"><option value="yes">Yes</option><option value="no">No</option></select>
+
+        <label>Hot Water Heating:</label>
+        <select name="hotwaterheating"><option value="yes">Yes</option><option value="no">No</option></select>
+
+        <label>Air Conditioning:</label>
+        <select name="airconditioning"><option value="yes">Yes</option><option value="no">No</option></select>
+
+        <label>Parking Spaces:</label>
+        <input type="number" name="parking" required>
+
+        <label>Preferred Area:</label>
+        <select name="prefarea"><option value="yes">Yes</option><option value="no">No</option></select>
+
+        <label>Furnishing Status:</label>
+        <select name="furnishingstatus">
+            <option value="unfurnished">Unfurnished</option>
+            <option value="semi-furnished">Semi-Furnished</option>
+            <option value="furnished">Fully Furnished</option>
+        </select>
+
+        <button type="button" onclick="predictPrice()">Predict Price</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function predictPrice() {
+            var formData = new FormData(document.getElementById('predictionForm'));
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = 'Predicted House Price: ' + data.predicted_price;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
