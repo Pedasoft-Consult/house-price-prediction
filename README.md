@@ -79,5 +79,5 @@ Make sure you have **Python 3.7+** installed.
 This project is licensed under the **MIT License**.
 
 ---
-**Contributors:** Your Name (your-email@example.com)
+**Contributors:** Pedahel Emmanuel Kojo (pedahelk@gmail.com)
 
