@@ -36,7 +36,7 @@ Make sure you have **Python 3.7+** installed.
 ### Steps to Run the Application
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-repo/house-price-prediction.git
+   git clone https://github.com/Pedasoft-Consult/house-price-prediction.git
    cd house-price-prediction
    ```
 
